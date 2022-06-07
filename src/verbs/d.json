@@ -1,0 +1,16 @@
+{
+  "damāqum": {
+    "transcription": "damAqum",
+    "stem": "g-stem",
+    "theme_vowel": "i",
+    "root": ["d", "m", "q"],
+    "meaning": ["to become good", "to improve", "to prosper"]
+  },
+  "danānum": {
+    "transcription": "danAnum",
+    "stem": "g-stem",
+    "theme_vowel": "i",
+    "root": ["d", "n", "n"],
+    "meaning": ["to become strong"]
+  }
+}

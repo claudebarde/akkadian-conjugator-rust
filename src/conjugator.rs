@@ -16,7 +16,7 @@ pub struct VerbForms {
 pub struct Verb {
     pub verb: String,
     pub preterite: VerbForms,
-    pub meaning: String,
+    pub meaning: Vec<String>,
 }
 
 struct PersonAffix<'a> {

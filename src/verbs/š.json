@@ -4,13 +4,13 @@
     "stem": "g-stem",
     "theme_vowel": "u",
     "root": ["š", "k", "n"],
-    "meaning": "to place"
+    "meaning": ["to place"]
   },
   "šarāqum": {
     "transcription": "s-arAqum",
     "stem": "g-stem",
     "theme_vowel": "i",
     "root": ["š", "r", "q"],
-    "meaning": "to steal"
+    "meaning": ["to steal"]
   }
 }

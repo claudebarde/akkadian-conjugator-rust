@@ -1,0 +1,23 @@
+{
+  "maḫāṣum": {
+    "transcription": "maHAs.um",
+    "stem": "g-stem",
+    "theme_vowel": "a",
+    "root": ["m", "ḫ", "ṣ"],
+    "meaning": ["to hit", "to strike", "to kill"]
+  },
+  "maqātum": {
+    "transcription": "maqAtum",
+    "stem": "g-stem",
+    "theme_vowel": "u",
+    "root": ["m", "q", "t"],
+    "meaning": ["to fall", "to happen", "to attack"]
+  },
+  "marāṣum": {
+    "transcription": "marAs.um",
+    "stem": "g-stem",
+    "theme_vowel": "a",
+    "root": ["m", "r", "ṣ"],
+    "meaning": ["to become sick", "to become difficult"]
+  }
+}

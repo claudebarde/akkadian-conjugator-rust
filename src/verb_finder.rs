@@ -8,7 +8,7 @@ pub struct VerbDataFromJson {
     pub stem: String,
     pub theme_vowel: char,
     pub root: Vec<char>,
-    pub meaning: String
+    pub meaning: Vec<String>
 }
 
 pub fn find_verb (verb: &String) -> VerbDataFromJson {
