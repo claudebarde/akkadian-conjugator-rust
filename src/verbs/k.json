@@ -7,5 +7,14 @@
     "verb_adjectival_vowel": "i",
     "root": ["k", "š", "d"],
     "meaning": ["to arrive"]
+  },
+  "kanākum": {
+    "transcription": "kanAkum",
+    "type": "active",
+    "stem": "g-stem",
+    "theme_vowel": "u",
+    "verb_adjectival_vowel": "i",
+    "root": ["k", "n", "k"],
+    "meaning": ["to seal"]
   }
 }

@@ -8,6 +8,15 @@
     "root": ["š", "k", "n"],
     "meaning": ["to place"]
   },
+  "šalāmum": {
+    "transcription": "SHalAmum",
+    "type": "active",
+    "stem": "g-stem",
+    "theme_vowel": "i",
+    "verb_adjectival_vowel": "i",
+    "root": ["š", "l", "m"],
+    "meaning": ["to become whole", "to succeed"]
+  },
   "šarāqum": {
     "transcription": "s-arAqum",
     "type": "active",

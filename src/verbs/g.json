@@ -1,0 +1,11 @@
+{
+  "gamārum": {
+    "transcription": "gamArum",
+    "type": "active",
+    "stem": "g-stem",
+    "theme_vowel": "u",
+    "verb_adjectival_vowel": "i",
+    "root": ["g", "m", "r"],
+    "meaning": ["to finish"]
+  }
+}

@@ -8,6 +8,15 @@
     "root": ["m", "ḫ", "ṣ"],
     "meaning": ["to hit", "to strike", "to kill"]
   },
+  "maḫārum": {
+    "transcription": "maHArum",
+    "type": "active",
+    "stem": "g-stem",
+    "theme_vowel": "u",
+    "verb_adjectival_vowel": "i",
+    "root": ["m", "ḫ", "r"],
+    "meaning": ["to accept", "to receie", "to approach", "to meet"]
+  },
   "maqātum": {
     "transcription": "maqAtum",
     "type": "active",
