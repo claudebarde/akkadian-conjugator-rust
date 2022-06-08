@@ -1,15 +1,19 @@
 {
   "šakānum": {
     "transcription": "SHakAnum",
+    "type": "active",
     "stem": "g-stem",
     "theme_vowel": "u",
+    "verb_adjectival_vowel": "i",
     "root": ["š", "k", "n"],
     "meaning": ["to place"]
   },
   "šarāqum": {
     "transcription": "s-arAqum",
+    "type": "active",
     "stem": "g-stem",
     "theme_vowel": "i",
+    "verb_adjectival_vowel": "i",
     "root": ["š", "r", "q"],
     "meaning": ["to steal"]
   }

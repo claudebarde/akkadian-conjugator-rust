@@ -1,15 +1,19 @@
 {
   "damāqum": {
     "transcription": "damAqum",
+    "type": "adjectival",
     "stem": "g-stem",
     "theme_vowel": "i",
+    "verb_adjectival_vowel": "i",
     "root": ["d", "m", "q"],
     "meaning": ["to become good", "to improve", "to prosper"]
   },
   "danānum": {
     "transcription": "danAnum",
+    "type": "adjectival",
     "stem": "g-stem",
     "theme_vowel": "i",
+    "verb_adjectival_vowel": "i",
     "root": ["d", "n", "n"],
     "meaning": ["to become strong"]
   }

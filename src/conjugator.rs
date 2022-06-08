@@ -1,6 +1,6 @@
-use crate::verb_finder::VerbDataFromJson;
+use crate::verb_finder::{VerbData, VerbStem, VerbType};
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct VerbForms {
     pub first_cs: String,
     pub second_ms: String,
@@ -12,11 +12,12 @@ pub struct VerbForms {
     pub third_fp: String
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Verb {
     pub verb: String,
     pub preterite: VerbForms,
-    pub meaning: Vec<String>,
+    pub adjective: [String; 2],
+    pub data: VerbData,
 }
 
 struct PersonAffix<'a> {
@@ -52,19 +53,21 @@ const PERSON_SUFFIX: PersonAffix = PersonAffix {
     third_fp: "ā",
 };
 
-pub fn conjugate(verb: &String, data: &VerbDataFromJson) -> Verb {
+pub fn conjugate(verb: &String, data: &VerbData) -> Verb {
     let preterite = to_preterite(&data).unwrap();
+    let adjective = to_adjective(&data);
 
     Verb { 
         verb: verb.clone(),
         preterite: preterite,
-        meaning: data.meaning.clone()
+        adjective: adjective,
+        data: data.clone()
     }
 }
 
-fn to_preterite(data: &VerbDataFromJson) -> Result<VerbForms, String> {
-    match data.stem.as_str() {
-        "g-stem" => {
+fn to_preterite(data: &VerbData) -> Result<VerbForms, String> {
+    match &data.stem {
+        VerbStem::GStem => {
             if data.root.len() == 3 {
                 let forms = VerbForms {
                     first_cs: format!("{}{}{}{}{}{}", 
@@ -130,5 +133,22 @@ fn to_preterite(data: &VerbDataFromJson) -> Result<VerbForms, String> {
             }
         },
         _ => Err(String::from("Unexpected value for verb stem"))
+    }
+}
+
+fn to_adjective(data: &VerbData) -> [String; 2] {
+    match data.r#type {
+        VerbType::Adjectival if data.root[1] == data.root[2] =>
+            // adjectival verbs with same R2 and R3
+            [
+                format!("{}a{}{}um", data.root[0], data.root[1], data.root[2]), 
+                format!("{}a{}{}atum", data.root[0], data.root[1], data.root[2])
+            ],
+        VerbType::Active | VerbType::Adjectival =>
+            // general case
+            [
+                format!("{}a{}{}um", data.root[0], data.root[1], data.root[2]), 
+                format!("{}a{}{}{}tum", data.root[0], data.root[1], data.verb_adjectival_vowel, data.root[2])
+            ]
     }
 }

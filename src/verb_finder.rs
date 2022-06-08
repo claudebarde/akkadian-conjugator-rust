@@ -2,16 +2,40 @@ use std::fs;
 use serde::{Deserialize, Serialize};
 use serde_json::{Value};
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct VerbDataFromJson {
     pub transcription: String,
+    pub r#type: String,
     pub stem: String,
+    pub verb_adjectival_vowel: char,
     pub theme_vowel: char,
     pub root: Vec<char>,
     pub meaning: Vec<String>
 }
 
-pub fn find_verb (verb: &String) -> VerbDataFromJson {
+#[derive(Debug, Clone)]
+pub enum VerbStem {
+    GStem
+}
+
+#[derive(Debug, Clone)]
+pub enum VerbType {
+    Active,
+    Adjectival
+}
+
+#[derive(Debug, Clone)]
+pub struct VerbData {
+    pub transcription: String,
+    pub r#type: VerbType,
+    pub stem: VerbStem,
+    pub theme_vowel: char,
+    pub verb_adjectival_vowel: char,
+    pub root: Vec<char>,
+    pub meaning: Vec<String>
+}
+
+pub fn find_verb (verb: &String) -> VerbData {
     // gets the first char of the verb
     let first_char = verb.chars().nth(0).unwrap();
     // finds the correcponding JSON file
@@ -29,5 +53,23 @@ pub fn find_verb (verb: &String) -> VerbDataFromJson {
             None => panic!("Couldn't find the verb {}", verb),
             Some (v) => serde_json::from_str(&Value::to_string(&v)).unwrap()
         };
-    verb_data
+
+    VerbData {
+        transcription: verb_data.transcription,
+        r#type: 
+            match verb_data.r#type.as_str() { 
+                | "active" => VerbType::Active,
+                | "adjectival" => VerbType::Adjectival,
+                | _ => panic!("Unrecognized verb type")
+            },
+        stem: 
+            match verb_data.stem.as_str() {
+                | "g-stem" => VerbStem::GStem,
+                | _ => panic!("Unrecognized verb stem")
+            },
+        theme_vowel: verb_data.theme_vowel,
+        verb_adjectival_vowel: verb_data.verb_adjectival_vowel,
+        root: verb_data.root,
+        meaning: verb_data.meaning
+    }
 }

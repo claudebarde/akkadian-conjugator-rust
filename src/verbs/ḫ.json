@@ -1,8 +1,10 @@
 {
   "ḫalāqum": {
     "transcription": "HalAqum",
+    "type": "active",
     "stem": "g-stem",
     "theme_vowel": "i",
+    "verb_adjectival_vowel": "i",
     "root": ["ḫ", "l", "q"],
     "meaning": ["to disappear", "to escape"]
   }

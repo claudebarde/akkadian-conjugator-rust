@@ -1,8 +1,10 @@
 {
   "rapāšum": {
     "transcription": "rapaASHum",
+    "type": "adjectival",
     "stem": "g-stem",
     "theme_vowel": "i",
+    "verb_adjectival_vowel": "a",
     "root": ["r", "p", "š"],
     "meaning": ["to become wide"]
   }

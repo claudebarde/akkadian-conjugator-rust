@@ -1,8 +1,10 @@
 {
   "kašādum": {
     "transcription": "kaSHAdum",
+    "type": "active",
     "stem": "g-stem",
     "theme_vowel": "u",
+    "verb_adjectival_vowel": "i",
     "root": ["k", "š", "d"],
     "meaning": ["to arrive"]
   }

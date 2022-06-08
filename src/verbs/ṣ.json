@@ -1,8 +1,10 @@
 {
   "ṣabātum": {
     "transcription": "s.abAtum",
+    "type": "active",
     "stem": "g-stem",
     "theme-vowel": "a",
+    "verb_adjectival_vowel": "i",
     "root": ["ṣ", "b", "t"],
     "meaning": ["to seize"]
   }
