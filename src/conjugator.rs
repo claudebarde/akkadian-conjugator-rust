@@ -1,4 +1,5 @@
 use crate::verb_finder::{VerbData, VerbStem, VerbType};
+use crate::utils::assimilations::{n_assimilation};
 
 #[derive(Debug, Clone)]
 pub struct VerbForms {
@@ -66,73 +67,47 @@ pub fn conjugate(verb: &String, data: &VerbData) -> Verb {
 }
 
 fn to_preterite(data: &VerbData) -> Result<VerbForms, String> {
+    fn build_preterit(root: &Vec<char>, prefix: &str, suffix: &str, theme_vowel: char) -> String {
+        format!("{}{}{}{}{}{}", prefix, root[0], root[1], theme_vowel, root[2], suffix)
+    }
+
     match &data.stem {
         VerbStem::GStem => {
             if data.root.len() == 3 {
                 let forms = VerbForms {
-                    first_cs: format!("{}{}{}{}{}{}", 
-                        PERSON_PREFIX.first_cs, 
-                        data.root[0], 
-                        data.root[1], 
-                        data.theme_vowel, 
-                        data.root[2], 
-                        PERSON_SUFFIX.first_cs),
-                    second_ms: format!("{}{}{}{}{}{}", 
-                        PERSON_PREFIX.second_ms, 
-                        data.root[0], 
-                        data.root[1], 
-                        data.theme_vowel, 
-                        data.root[2], 
-                        PERSON_SUFFIX.second_ms),
-                    second_fs: format!("{}{}{}{}{}{}", 
-                        PERSON_PREFIX.second_fs, 
-                        data.root[0], 
-                        data.root[1], 
-                        data.theme_vowel, 
-                        data.root[2], 
-                        PERSON_SUFFIX.second_fs),
-                    third_cs: format!("{}{}{}{}{}{}", 
-                        PERSON_PREFIX.third_cs, 
-                        data.root[0], 
-                        data.root[1], 
-                        data.theme_vowel, 
-                        data.root[2], 
-                        PERSON_SUFFIX.third_cs),
-                    first_cp: format!("{}{}{}{}{}{}", 
-                        PERSON_PREFIX.first_cp, 
-                        data.root[0], 
-                        data.root[1], 
-                        data.theme_vowel, 
-                        data.root[2], 
-                        PERSON_SUFFIX.first_cp),
-                    second_cp: format!("{}{}{}{}{}{}", 
-                        PERSON_PREFIX.second_cp, 
-                        data.root[0], 
-                        data.root[1], 
-                        data.theme_vowel, 
-                        data.root[2], 
-                        PERSON_SUFFIX.second_cp),
-                    third_mp: format!("{}{}{}{}{}{}", 
-                        PERSON_PREFIX.third_mp, 
-                        data.root[0], 
-                        data.root[1], 
-                        data.theme_vowel, 
-                        data.root[2], 
-                        PERSON_SUFFIX.third_mp),
-                    third_fp: format!("{}{}{}{}{}{}", 
-                        PERSON_PREFIX.third_fp, 
-                        data.root[0], 
-                        data.root[1], 
-                        data.theme_vowel, 
-                        data.root[2], 
-                        PERSON_SUFFIX.third_fp)
+                    first_cs: build_preterit(&data.root, PERSON_PREFIX.first_cs, PERSON_SUFFIX.first_cs, data.theme_vowel),
+                    second_ms: build_preterit(&data.root, PERSON_PREFIX.second_ms, PERSON_SUFFIX.second_ms, data.theme_vowel),
+                    second_fs: build_preterit(&data.root, PERSON_PREFIX.second_fs, PERSON_SUFFIX.second_fs, data.theme_vowel),
+                    third_cs: build_preterit(&data.root, PERSON_PREFIX.third_cs, PERSON_SUFFIX.third_cs, data.theme_vowel),
+                    first_cp: build_preterit(&data.root, PERSON_PREFIX.first_cp, PERSON_SUFFIX.first_cp, data.theme_vowel),
+                    second_cp: build_preterit(&data.root, PERSON_PREFIX.second_cp, PERSON_SUFFIX.second_cp, data.theme_vowel),
+                    third_mp: build_preterit(&data.root, PERSON_PREFIX.third_mp, PERSON_SUFFIX.third_mp, data.theme_vowel),
+                    third_fp: build_preterit(&data.root, PERSON_PREFIX.third_fp, PERSON_SUFFIX.third_fp, data.theme_vowel)
                 };
                 Ok(forms)
             } else {
                 Err(String::from("Unexpected non-triliteral root"))
             }
         },
-        _ => Err(String::from("Unexpected value for verb stem"))
+        VerbStem::GStemWeakIn => {
+            if data.root.len() == 3 {
+                // R1 = 'n' assimilates to following consonant
+                let root: Vec<char> = vec![data.root[1], data.root[1], data.root[2]];
+                let forms = VerbForms {
+                    first_cs: build_preterit(&root, PERSON_PREFIX.first_cs, PERSON_SUFFIX.first_cs, data.theme_vowel),
+                    second_ms: build_preterit(&root, PERSON_PREFIX.second_ms, PERSON_SUFFIX.second_ms, data.theme_vowel),
+                    second_fs: build_preterit(&root, PERSON_PREFIX.second_fs, PERSON_SUFFIX.second_fs, data.theme_vowel),
+                    third_cs: build_preterit(&root, PERSON_PREFIX.third_cs, PERSON_SUFFIX.third_cs, data.theme_vowel),
+                    first_cp: build_preterit(&root, PERSON_PREFIX.first_cp, PERSON_SUFFIX.first_cp, data.theme_vowel),
+                    second_cp: build_preterit(&root, PERSON_PREFIX.second_cp, PERSON_SUFFIX.second_cp, data.theme_vowel),
+                    third_mp: build_preterit(&root, PERSON_PREFIX.third_mp, PERSON_SUFFIX.third_mp, data.theme_vowel),
+                    third_fp: build_preterit(&root, PERSON_PREFIX.third_fp, PERSON_SUFFIX.third_fp, data.theme_vowel)
+                };
+                Ok(forms)
+            } else {
+                Err(String::from("Unexpected non-triliteral root"))
+            }
+        }
     }
 }
 
@@ -144,11 +119,33 @@ fn to_adjective(data: &VerbData) -> [String; 2] {
                 format!("{}a{}{}um", data.root[0], data.root[1], data.root[2]), 
                 format!("{}a{}{}atum", data.root[0], data.root[1], data.root[2])
             ],
-        VerbType::Active | VerbType::Adjectival =>
-            // general case
+        VerbType::Active | VerbType::Adjectival if data.root[2] == 'd' || data.root[2] == 'ṭ' => {
+            // 'd' and 'ṭ' assimilations
             [
                 format!("{}a{}{}um", data.root[0], data.root[1], data.root[2]), 
-                format!("{}a{}{}{}tum", data.root[0], data.root[1], data.verb_adjectival_vowel, data.root[2])
+                format!("{}a{}{}{}tum", data.root[0], data.root[1], data.verb_adjectival_vowel, 't')
             ]
+        },
+        VerbType::Active | VerbType::Adjectival if data.root[2] == 's' || data.root[2] == 'ṣ' || data.root[2] == 'z' => {
+            // 's', 'ṣ' and 'z' assimilations
+            [
+                format!("{}a{}{}um", data.root[0], data.root[1], data.root[2]), 
+                format!("{}a{}{}{}tum", data.root[0], data.root[1], data.verb_adjectival_vowel, 'š')
+            ]
+        },
+        VerbType::Active | VerbType::Adjectival => {
+            // general case
+            let r1 = data.root[0];
+            let r2 = data.root[1];
+            let r3 = data.root[2];
+            // possible n assimilation
+            let masculine = format!("{}a{}{}um", r1, r2, r3);
+            let feminine = format!("{}a{}{}{}um", r1, r2, data.verb_adjectival_vowel, n_assimilation(r3, 't'));
+
+            [
+                masculine, 
+                feminine
+            ]
+        }
     }
 }

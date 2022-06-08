@@ -1,0 +1,20 @@
+{
+  "paqādum": {
+    "transcription": "paqAdum",
+    "type": "active",
+    "stem": "g-stem",
+    "theme_vowel": "i",
+    "verb_adjectival_vowel": "i",
+    "root": ["p", "q", "d"],
+    "meaning": ["to hand over", "to supply", "to take care of"]
+  },
+  "pašāšum": {
+    "transcription": "paSHASHum",
+    "type": "active",
+    "stem": "g-stem",
+    "theme_vowel": "u",
+    "verb_adjectival_vowel": "i",
+    "root": ["p", "š", "š"],
+    "meaning": ["to anoint", "to rub", "to smear"]
+  }
+}

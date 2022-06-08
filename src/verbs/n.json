@@ -1,0 +1,38 @@
+{
+  "nadānum": {
+    "transcription": "nadAnum",
+    "type": "active",
+    "stem": "g-stem",
+    "theme_vowel": "i",
+    "verb_adjectival_vowel": "i",
+    "root": ["n", "d", "n"],
+    "meaning": ["to give", "to deliver", "to transfer"]
+  },
+  "naqārum": {
+    "transcription": "naqArum",
+    "type": "active",
+    "stem": "g-stem",
+    "theme_vowel": "u",
+    "verb_adjectival_vowel": "i",
+    "root": ["n", "q", "r"],
+    "meaning": ["to tear down", "to destroy"]
+  },
+  "nasāḫum": {
+    "transcription": "nasAHum",
+    "type": "active",
+    "stem": "g-stem",
+    "theme_vowel": "u",
+    "verb_adjectival_vowel": "i",
+    "root": ["n", "s", "ḫ"],
+    "meaning": ["to remove", "to reject"]
+  },
+  "naṣārum": {
+    "transcription": "nas.Arum",
+    "type": "active",
+    "stem": "g-stem",
+    "theme_vowel": "u",
+    "verb_adjectival_vowel": "i",
+    "root": ["n", "ṣ", "r"],
+    "meaning": ["to watch over", "to protect"]
+  }
+}

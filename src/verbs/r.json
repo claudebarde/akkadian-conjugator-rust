@@ -7,5 +7,14 @@
     "verb_adjectival_vowel": "a",
     "root": ["r", "p", "š"],
     "meaning": ["to become wide"]
+  },
+  "rakābum": {
+    "transcription": "rakAbum",
+    "type": "active",
+    "stem": "g-stem",
+    "theme_vowel": "a",
+    "verb_adjectival_vowel": "i",
+    "root": ["r", "k", "b"],
+    "meaning": ["to mount", "to ride", "to board"]
   }
 }

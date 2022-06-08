@@ -1,6 +1,7 @@
 use std::env::{args, Args};
 pub mod verb_finder;
 pub mod conjugator;
+pub mod utils;
 
 fn main() {
     let mut args: Args = args();
