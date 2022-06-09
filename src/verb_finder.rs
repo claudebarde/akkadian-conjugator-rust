@@ -16,7 +16,8 @@ pub struct VerbDataFromJson {
 #[derive(Debug, Clone)]
 pub enum VerbStem {
     GStem,
-    GStemWeakIn
+    GStemWeakIn,
+    GStemWeakIII
 }
 
 #[derive(Debug, Clone)]
@@ -65,6 +66,7 @@ pub fn find_verb (verb: &String) -> VerbData {
             },
         stem: 
             match verb_data.stem.as_str() {
+                | "g-stem" if verb_data.root.len() == 2 => VerbStem::GStemWeakIII,
                 | "g-stem" if verb_data.root[0] == 'n' => VerbStem::GStemWeakIn,
                 | "g-stem" if verb_data.root[0] != 'n' => VerbStem::GStem,
                 | _ => panic!("Unrecognized verb stem")

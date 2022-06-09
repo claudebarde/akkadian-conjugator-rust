@@ -1,0 +1,11 @@
+{
+  "ṭarādum": {
+    "transcription": "t.arAdum",
+    "type": "active",
+    "stem": "g-stem",
+    "theme_vowel": "u",
+    "verb_adjectival_vowel": "i",
+    "root": ["ṭ", "r", "d"],
+    "meaning": ["to send"]
+  }
+}

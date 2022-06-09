@@ -8,6 +8,15 @@
     "root": ["p", "q", "d"],
     "meaning": ["to hand over", "to supply", "to take care of"]
   },
+  "parāsum": {
+    "transcription": "parAsum",
+    "type": "active",
+    "stem": "g-stem",
+    "theme_vowel": "u",
+    "verb_adjectival_vowel": "i",
+    "root": ["p", "r", "s"],
+    "meaning": ["to divide", "to decide", "to select"]
+  },
   "pašāšum": {
     "transcription": "paSHASHum",
     "type": "active",

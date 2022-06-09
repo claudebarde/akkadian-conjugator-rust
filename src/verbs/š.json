@@ -25,5 +25,14 @@
     "verb_adjectival_vowel": "i",
     "root": ["š", "r", "q"],
     "meaning": ["to steal"]
+  },
+  "šaṭārum": {
+    "transcription": "s-at.Arum",
+    "type": "active",
+    "stem": "g-stem",
+    "theme_vowel": "u",
+    "verb_adjectival_vowel": "i",
+    "root": ["š", "ṭ", "r"],
+    "meaning": ["to write"]
   }
 }

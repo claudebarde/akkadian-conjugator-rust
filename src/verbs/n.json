@@ -26,6 +26,15 @@
     "root": ["n", "s", "ḫ"],
     "meaning": ["to remove", "to reject"]
   },
+  "nasākum": {
+    "transcription": "nasAkum",
+    "type": "active",
+    "stem": "g-stem",
+    "theme_vowel": "u",
+    "verb_adjectival_vowel": "i",
+    "root": ["n", "s", "k"],
+    "meaning": ["to throw", "to shoot"]
+  },
   "naṣārum": {
     "transcription": "nas.Arum",
     "type": "active",
@@ -34,5 +43,14 @@
     "verb_adjectival_vowel": "i",
     "root": ["n", "ṣ", "r"],
     "meaning": ["to watch over", "to protect"]
+  },
+  "naṭālum": {
+    "transcription": "nat.Alum",
+    "type": "active",
+    "stem": "g-stem",
+    "theme_vowel": "u",
+    "verb_adjectival_vowel": "i",
+    "root": ["n", "ṭ", "l"],
+    "meaning": ["to see", "to look"]
   }
 }
